@@ -1,0 +1,12 @@
+---
+import { clients } from '../data/company';
+import ClientLogo from './ClientLogo.astro';
+import Icon from './Icon.astro';
+---
+<section id="clients" class="clients-section shell" aria-labelledby="clients-title">
+  <h2 id="clients-title" class="eyebrow">In good company. A few of the businesses we serve.</h2>
+  <ul class="client-grid" role="list">
+    {clients.map(client => <li title={client.name}><ClientLogo client={client} /></li>)}
+  </ul>
+  <a href="/clients/" class="clients-more">Meet more of our clients <Icon name="arrow" /></a>
+</section>

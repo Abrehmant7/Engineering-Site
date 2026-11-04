@@ -1,0 +1,49 @@
+---
+import Icon from './Icon.astro';
+
+const steps = [
+  {
+    title: 'Share the challenge.',
+    description: 'Tell us what your production needs to do better. It could be a new machine, a control panel, a programming requirement or the right component.',
+  },
+  {
+    title: 'Bring the right details.',
+    description: 'Equipment photographs, part numbers, drawings or a short process description help connect the conversation to your actual setup.',
+  },
+  {
+    title: 'Find a practical way forward.',
+    description: 'Discuss how the mechanical, electrical and programming requirements fit together, then explore a suitable scope with the engineering team.',
+  },
+];
+---
+
+<section id="our-process" class="process-section" aria-labelledby="process-title">
+  <div class="shell">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow"><span class="section-tick"></span> Your project, one step at a time</p>
+        <h2 id="process-title">Good engineering starts<br />with a clear understanding.</h2>
+      </div>
+      <p class="section-intro">From a single component to a new machine, a useful first conversation starts with your production goal.</p>
+    </div>
+
+    <ol class="process-steps">
+      {steps.map((step, index) => (
+        <li>
+          <div class="process-step-marker" aria-hidden="true">
+            <span>0{index + 1}</span>
+            <div class="process-step-line"></div>
+            {index < steps.length - 1 && <Icon name="arrow-right" />}
+          </div>
+          <h3>{step.title}</h3>
+          <p>{step.description}</p>
+        </li>
+      ))}
+    </ol>
+
+    <div class="process-footer">
+      <p>You don’t need a finished specification to start a conversation.</p>
+      <a href="/contact/#enquiry" class="text-link">Tell us what you have in mind <Icon name="arrow" /></a>
+    </div>
+  </div>
+</section>

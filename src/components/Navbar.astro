@@ -1,0 +1,41 @@
+---
+import Icon from './Icon.astro';
+import { navigation as links } from '../data/company';
+const currentPath = Astro.url.pathname;
+---
+<header class="site-header">
+  <div class="shell header-inner">
+    <a href="/" class="brand-link" aria-label="Linear Automation home">
+      <img src="/images/linear-automation.png" width="1176" height="416" alt="Linear Automation" class="brand-logo" />
+    </a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      {links.map(link => <a href={link.href} aria-current={currentPath === link.href ? 'page' : undefined}>{link.label}</a>)}
+    </nav>
+    <a href="/contact/" class="button button-dark header-contact" aria-current={currentPath === '/contact/' ? 'page' : undefined}>Let's talk <Icon name="arrow" /></a>
+    <details class="mobile-nav">
+      <summary aria-label="Toggle navigation"><Icon name="menu" /></summary>
+      <nav aria-label="Mobile navigation">
+        <a href="/" aria-current={currentPath === '/' ? 'page' : undefined}>Home<Icon name="arrow" /></a>
+        {links.map(link => <a href={link.href} aria-current={currentPath === link.href ? 'page' : undefined}>{link.label}<Icon name="arrow" /></a>)}
+        <a href="/contact/" aria-current={currentPath === '/contact/' ? 'page' : undefined}>Let's talk<Icon name="arrow" /></a>
+      </nav>
+    </details>
+  </div>
+</header>
+<script>
+  const navigation = document.querySelector<HTMLDetailsElement>('.mobile-nav');
+  navigation?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => { navigation.open = false; });
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && navigation?.open) {
+      navigation.open = false;
+      navigation.querySelector('summary')?.focus();
+    }
+  });
+  document.addEventListener('click', event => {
+    if (navigation?.open && event.target instanceof Node && !navigation.contains(event.target)) {
+      navigation.open = false;
+    }
+  });
+</script>

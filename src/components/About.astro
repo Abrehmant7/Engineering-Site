@@ -1,0 +1,24 @@
+---
+import { Image } from 'astro:assets';
+import panel from '../assets/images/control-panel.png';
+import Icon from './Icon.astro';
+---
+<section id="about" class="about-section section-space shell" aria-labelledby="about-title">
+  <div class="about-visual">
+    <Image src={panel} alt="PLC modules and servo drives inside a carefully wired industrial control cabinet" widths={[480, 800, 1200]} sizes="(min-width: 900px) 45vw, 100vw" format="webp" quality={82} loading="lazy" class="about-image" />
+    <div class="image-label"><span class="status-dot"></span> Every detail. Working together.</div>
+    <span class="image-corner-mark" aria-hidden="true"><Icon name="plus" /></span>
+  </div>
+  <div class="about-copy">
+    <p class="eyebrow"><span class="section-tick"></span> A partner in your progress</p>
+    <h2 id="about-title">Big on engineering.<br />Focused on <span class="muted-heading">you.</span></h2>
+    <p class="body-copy">Your production has its own challenges. Your engineering should be built around them.</p>
+    <p class="body-copy">Linear Automation brings together mechanical design, electrical control and machine programming. Alongside Prince Engineering Works, we help turn your production requirements into practical automation solutions.</p>
+    <div class="about-principles">
+      <span><Icon name="check" /> Purpose-built solutions</span>
+      <span><Icon name="check" /> Mechanical + electrical expertise</span>
+      <span><Icon name="check" /> Precision in every process</span>
+    </div>
+    <a href="/about/" class="text-link">Get to know Linear <Icon name="arrow" /></a>
+  </div>
+</section>

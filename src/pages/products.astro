@@ -1,0 +1,17 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Contact from '../components/Contact.astro';
+import Icon from '../components/Icon.astro';
+import { Image } from 'astro:assets';
+import hardware from '../assets/images/automation-hardware.png';
+import { products } from '../data/company';
+---
+<SiteLayout title="Automation Products & Components | Linear Automation" description="Explore PLC controllers, servo motors and drives, and automation hardware. Discuss suitable components for your machine with Linear Automation.">
+  <PageHeader eyebrow="Products" title="Good automation starts" accent="with the right components." description="Explore our core hardware categories. Share your equipment details and application so we can discuss the right fit for your production needs." />
+  <section class="product-overview shell" aria-labelledby="product-overview-heading"><div class="product-overview-image"><Image src={hardware} alt="Representative PLC modules, servo drive and servo motor" widths={[600, 1000, 1448]} sizes="(min-width: 900px) 60vw, 100vw" format="webp" quality={85} loading="eager" /></div><div class="product-overview-copy"><p class="eyebrow">Control. Motion. Integration.</p><h2 id="product-overview-heading">Start with your application.</h2><p class="body-copy">A controller, motor or drive is part of a larger system. Before choosing a component, let’s understand the machine around it.</p><a href="/contact/#enquiry" class="text-link">Ask about a component<Icon name="arrow" /></a></div></section>
+  <nav class="page-jump-links shell" aria-label="Product categories">{products.map((product, index) => <a href={`#${product.id}`}><span>/0{index + 1}</span>{product.name}<Icon name="arrow" /></a>)}</nav>
+  <section class="product-detail-list shell" aria-label="Automation product categories">{products.map((product, index) => <article id={product.id} class="product-detail"><div><p class="eyebrow">/0{index + 1} · Products & components</p><h2>{product.name}</h2><p class="body-copy">{product.description}</p><a href={`/contact/?interest=${product.id}#enquiry`} class="button button-dark">Enquire about this category<Icon name="arrow" /></a></div><div class="requirements-box"><h3>What to share with us</h3><ul class="check-list">{product.checklist.map(item => <li><Icon name="check" />{item}</li>)}</ul></div></article>)}</section>
+  <div class="product-note shell"><Icon name="message" /><p>Have a part number or a photograph? Bring it to the conversation. Models, specifications and availability can be discussed with the team for your enquiry.</p></div>
+  <Contact />
+</SiteLayout>

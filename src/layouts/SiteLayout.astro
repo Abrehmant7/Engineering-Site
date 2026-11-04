@@ -1,0 +1,16 @@
+---
+import Layout from './Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+}
+---
+<Layout {...Astro.props}>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <Navbar />
+  <main id="main-content"><slot /></main>
+  <Footer />
+</Layout>

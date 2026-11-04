@@ -1,0 +1,26 @@
+---
+import { Image } from 'astro:assets';
+import hardware from '../assets/images/automation-hardware.png';
+import Icon from './Icon.astro';
+import { products } from '../data/company';
+---
+<section id="products" class="products-section section-space shell" aria-labelledby="products-title">
+  <div class="products-copy">
+    <p class="eyebrow"><span class="section-tick"></span> Products & components</p>
+    <h2 id="products-title">The right hardware.<br /><span class="muted-heading">The right result.</span></h2>
+    <p class="body-copy">Good automation starts with the right components. Explore control and motion hardware to match your machine and production needs.</p>
+    <div class="product-list">
+      {products.map(product => (
+        <a href={`/products/#${product.id}`} class="product-row" aria-label={`Explore ${product.name.toLowerCase()}`}>
+          <div><h3>{product.name}</h3><p>{product.detail}</p></div>
+          <span class="product-arrow"><Icon name="arrow" /></span>
+        </a>
+      ))}
+    </div>
+    <p class="product-help">Not sure what you need? <a href="/contact/">Talk it through with us <span aria-hidden="true">↗</span></a></p>
+  </div>
+  <figure class="products-visual">
+    <Image src={hardware} alt="Representative PLC controller modules, a servo drive and a servo motor on a neutral background" widths={[480, 800, 1200]} sizes="(min-width: 900px) 45vw, 100vw" format="webp" quality={85} loading="lazy" class="products-image" />
+    <figcaption><span>CONTROL. MOTION. POSSIBILITY.</span><Icon name="plus" /></figcaption>
+  </figure>
+</section>

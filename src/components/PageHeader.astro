@@ -1,0 +1,16 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  accent: string;
+  description: string;
+}
+const { eyebrow, title, accent, description } = Astro.props;
+---
+<section class="page-header shell" aria-labelledby="page-title">
+  <nav aria-label="Breadcrumb" class="breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">{eyebrow}</span></nav>
+  <div class="page-header-grid">
+    <div><p class="eyebrow"><span class="section-tick"></span>{eyebrow}</p><h1 id="page-title">{title}<br /><span>{accent}</span></h1></div>
+    <p class="page-description">{description}</p>
+  </div>
+</section>

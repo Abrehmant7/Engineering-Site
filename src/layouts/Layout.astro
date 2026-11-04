@@ -1,0 +1,36 @@
+---
+import '../styles/global.css';
+import '@fontsource-variable/manrope';
+
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+const { title = 'Linear Automation', description, noindex = false } = Astro.props;
+const canonical = Astro.site && new URL(Astro.url.pathname, Astro.site).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    {description && <meta name="description" content={description} />}
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta name="theme-color" content="#f8f8f4" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Linear Automation" />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    {canonical && <meta property="og:url" content={canonical} />}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body id="top" class="min-h-screen font-sans antialiased">
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,25 @@
+---
+import Icon from './Icon.astro';
+import { services } from '../data/company';
+---
+<section id="services" class="services-section section-space" aria-labelledby="services-title">
+  <div class="shell">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow"><span class="section-tick"></span> What we do</p>
+        <h2 id="services-title">From the first idea.<br />To a better production line.</h2>
+      </div>
+      <p class="section-intro">Three connected disciplines. One practical approach to making your machines work better.</p>
+    </div>
+    <div class="services-grid">
+      {services.map(service => (
+        <article class="service-card">
+          <div class="service-top"><span class="service-icon"><Icon name={service.icon} /></span><span class="service-number">/{service.number}</span></div>
+          <h3>{service.title}</h3>
+          <p>{service.description}</p>
+          <div class="service-bottom"><span>{service.detail}</span><a href={`/services/#${service.id}`} aria-label={`Explore ${service.title.toLowerCase()}`}><Icon name="arrow" /></a></div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,22 @@
+---
+import { Image } from 'astro:assets';
+import hero from '../assets/images/industrial-robotics.png';
+import Icon from './Icon.astro';
+---
+<section id="home" class="hero outer-shell" aria-labelledby="hero-title">
+  <Image src={hero} alt="A yellow industrial robotic arm handling a metal component in a factory" widths={[640, 960, 1280, 1672]} sizes="(min-width: 1500px) 1440px, 100vw" format="webp" quality={85} loading="eager" fetchpriority="high" class="hero-image" />
+  <div class="hero-shade"></div>
+  <div class="hero-content">
+    <p class="eyebrow hero-eyebrow"><span class="status-dot"></span> Precision. Performance. Progress.</p>
+    <h1 id="hero-title">Engineering a<br />better <span>tomorrow.</span></h1>
+    <p class="hero-description">Practical engineering. Intelligent automation. We bring machines, controls and programming together to move your production forward.</p>
+    <div class="hero-actions">
+      <a href="/services/" class="button button-yellow">Explore our expertise <Icon name="arrow" /></a>
+      <a href="/contact/" class="hero-text-link">Discuss your project <Icon name="arrow-right" /></a>
+    </div>
+  </div>
+  <div class="hero-bottom">
+    <p>PLC. ROBOTICS. IIoT.</p>
+    <a href="#about">Built around your production <span class="scroll-arrow">↓</span></a>
+  </div>
+</section>

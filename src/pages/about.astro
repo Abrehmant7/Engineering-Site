@@ -1,0 +1,20 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Contact from '../components/Contact.astro';
+import Icon from '../components/Icon.astro';
+import { Image } from 'astro:assets';
+import robotics from '../assets/images/industrial-robotics.png';
+import { services, company } from '../data/company';
+---
+<SiteLayout title="About Us | Linear Automation" description="Meet Linear Automation and Prince Engineering Works. Mechanical engineering, electrical control and PLC programming focused on practical production needs.">
+  <PageHeader eyebrow="About us" title="Engineering with purpose." accent="Progress, together." description="We bring mechanical, electrical and programming expertise together around one goal: making your production work better." />
+  <div class="page-wide-image outer-shell"><Image src={robotics} alt="An industrial robot handling a metal component in a manufacturing workshop" widths={[640, 1000, 1440]} sizes="100vw" format="webp" quality={83} loading="eager" /></div>
+  <section class="editorial-section section-space shell" aria-labelledby="company-heading">
+    <p class="eyebrow"><span class="section-tick"></span> Who we are</p>
+    <div><h2 id="company-heading">A practical mindset.<br />A connected approach.</h2><p class="body-copy">Linear Automation focuses on industrial automation through custom machinery, electrical control panels and machine programming. We look at how these parts work together, because a production challenge rarely belongs to just one discipline.</p><p class="body-copy">Developing industry for a better tomorrow is the idea behind our work. It starts with understanding the machine, the process and the people who work with it.</p></div>
+  </section>
+  <section class="partnership-section shell" aria-labelledby="partnership-heading"><span class="partner-monogram" aria-hidden="true">L<span>×</span>P</span><div><p class="eyebrow">Working together</p><h2 id="partnership-heading">{company.name}<br /><span class="muted-heading">& {company.partner}</span></h2><p class="body-copy">Linear Automation and Prince Engineering Works work together to serve industrial customers. Our collaboration connects machinery and structures with electrical controls and programming, helping customers discuss their production requirements as a whole.</p></div></section>
+  <section class="section-space shell" aria-labelledby="disciplines-heading"><div class="section-heading"><div><p class="eyebrow"><span class="section-tick"></span> Our disciplines</p><h2 id="disciplines-heading">Different skills.<br />One production goal.</h2></div><a href="/services/" class="text-link">Explore our expertise<Icon name="arrow" /></a></div><div class="principle-grid">{services.map(service => <article><span class="eyebrow">/{service.number}</span><h3>{service.title}</h3><p>{service.description}</p><a href={`/services/#${service.id}`} aria-label={`Read about ${service.title.toLowerCase()}`}><Icon name="arrow" /></a></article>)}</div></section>
+  <Contact />
+</SiteLayout>

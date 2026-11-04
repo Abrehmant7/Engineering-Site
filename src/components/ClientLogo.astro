@@ -1,0 +1,14 @@
+---
+interface Props {
+  client: { name: string; viewBox: string };
+  prefix?: string;
+}
+const { client, prefix = 'client' } = Astro.props;
+const [x, y, width, height] = client.viewBox.split(' ').map(Number);
+const clipId = `${prefix}-${client.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+---
+<svg viewBox={client.viewBox} role="img" aria-label={client.name} class="client-logo" preserveAspectRatio="xMidYMid meet">
+  <title>{client.name}</title>
+  <defs><clipPath id={clipId}><rect x={x} y={y} width={width} height={height} /></clipPath></defs>
+  <image href="/images/client-brochure.jpeg" width="564" height="1024" clip-path={`url(#${clipId})`} />
+</svg>

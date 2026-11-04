@@ -1,0 +1,13 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ClientLogo from '../components/ClientLogo.astro';
+import Contact from '../components/Contact.astro';
+import { allClients } from '../data/company';
+---
+<SiteLayout title="Our Clients | Linear Automation" description="Explore selected clients from the shared Linear Automation and Prince Engineering Works portfolio, including cement, ceramics and manufacturing businesses.">
+  <PageHeader eyebrow="Our clients" title="In good company." accent="Across industry." description="A selection of the businesses in the shared Linear Automation and Prince Engineering Works client portfolio. Different production environments. The same focus on practical engineering." />
+  <section class="client-directory shell" aria-label="Selected company clients"><ul role="list">{allClients.map(client => <li><ClientLogo client={client} prefix="directory" /><h2>{client.name}</h2></li>)}</ul></section>
+  <section class="client-industries shell" aria-labelledby="industries-heading"><div><p class="eyebrow"><span class="section-tick"></span> A broad industrial portfolio</p><h2 id="industries-heading">Different processes.<br />Shared engineering needs.</h2></div><div><p class="body-copy">Our client portfolio spans cement, sanitary ware, ceramics, pipes and fittings, and other manufacturing businesses. Every production process has its own requirements for machinery, controls and coordinated operation.</p><div class="industry-tags"><span>Cement</span><span>Sanitary ware</span><span>Ceramics</span><span>Pipes & fittings</span><span>Manufacturing</span></div></div></section>
+  <Contact />
+</SiteLayout>

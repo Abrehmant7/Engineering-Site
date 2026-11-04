@@ -1,0 +1,19 @@
+# Dependencies and generated files
+node_modules/
+dist/
+.astro/
+tmp/
+.vercel/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# Editor and operating system files
+.DS_Store
+Thumbs.db
+.idea/
