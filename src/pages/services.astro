@@ -6,17 +6,34 @@ import Icon from '../components/Icon.astro';
 import { Image } from 'astro:assets';
 import robotics from '../assets/images/industrial-robotics.png';
 import panel from '../assets/images/control-panel.png';
+import robotManufacturing from '../assets/images/robot-manufacturing.png';
 import { services } from '../data/company';
 const details = [
   { ...services[0], image: robotics, alt: 'A robotic arm and mechanical fixtures in an industrial workshop', heading: 'Built around the way you work.', body: 'A machine should serve your process. We design custom machinery and structures around the job your production needs to perform, bringing mechanical movement, accuracy and practical operation into the same conversation.', points: ['Custom machine and structure design', 'Production automation requirements', 'Coordination with electrical controls and programming'] },
   { ...services[1], image: panel, alt: 'A wired industrial control panel with controller and drive modules', heading: 'Bring your controls together.', body: 'A well-planned panel gives the electrical side of a machine a clear structure. We design and build control panels around your equipment, combining the control components and wiring your application needs.', points: ['Electrical control panel design and build', 'Integration of control and drive components', 'Panel layouts considered for practical operation'] },
   { ...services[2], image: panel, alt: 'Programmable control modules connected inside an electrical cabinet', heading: 'Make complex operations work in sequence.', body: 'Programming connects your machine’s instructions to its real-world operation. We work on PLC and machine control logic to coordinate equipment, operating sequences and repeatable production tasks.', points: ['PLC and machine programming', 'Coordinated operating sequences', 'Logic shaped around your machine and process'] },
+  { ...services[3], image: robotManufacturing, alt: 'Illustrative assembly of a new custom industrial robot', heading: 'Revive an existing robot. Build a new one.', body: 'Our robotics work has two parts. Retrofitting replaces old or unsuitable components in an existing robot with new ones. Manufacturing designs and builds a new robot from scratch, bringing its structure, motion hardware, tooling and controls together around the production task.', points: ['Robot retrofitting and component replacement', 'New robot design, fabrication and assembly', 'Motion control, robot programming and application testing'] },
 ];
 ---
-<SiteLayout title="Our Expertise | Linear Automation" description="Explore custom mechanical engineering, electrical control panel design and PLC machine programming from Linear Automation.">
-  <PageHeader eyebrow="Our expertise" title="One production challenge." accent="Connected expertise." description="From the structure of a machine to the controls that run it, our three disciplines work toward the same result: practical, coordinated automation." />
-  <nav class="page-jump-links shell" aria-label="Engineering services">{services.map(service => <a href={`#${service.id}`}><span>/{service.number}</span>{service.title}<Icon name="arrow" /></a>)}</nav>
-  <div class="service-detail-list shell">{details.map(service => <section id={service.id} class="service-detail" aria-labelledby={`${service.id}-heading`}><div class="service-detail-image"><Image src={service.image} alt={service.alt} widths={[480, 800, 1200]} sizes="(min-width: 900px) 45vw, 100vw" format="webp" quality={82} loading="lazy" /></div><div class="service-detail-copy"><p class="eyebrow"><span class="section-tick"></span>/{service.number} · {service.title}</p><h2 id={`${service.id}-heading`}>{service.heading}</h2><p class="body-copy">{service.body}</p><ul class="check-list">{service.points.map(point => <li><Icon name="check" />{point}</li>)}</ul><a href={`/contact/?interest=${service.id}#enquiry`} class="text-link">Discuss this service<Icon name="arrow" /></a></div></section>)}</div>
+<SiteLayout title="Our Expertise & Robotics Services | Linear Automation" description="Mechanical engineering, electrical control panels, PLC programming, robot retrofitting and new robot manufacturing from Linear Automation.">
+  <PageHeader eyebrow="Our expertise" title="One production challenge." accent="Connected expertise." description="Mechanical design, electrical control, programming and robotics. Four connected disciplines, shaped around your production task." />
+  <nav class="page-jump-links service-jump-links shell" aria-label="Engineering services">{services.map(service => <a href={`#${service.id}`}><span>/{service.number}</span>{service.title}<Icon name="arrow" /></a>)}</nav>
+  <div class="service-detail-list shell">
+    {details.map(service => (
+      <section id={service.id} class="service-detail" aria-labelledby={`${service.id}-heading`}>
+        <div class="service-detail-image"><Image src={service.image} alt={service.alt} widths={[480, 800, 1200]} sizes="(min-width: 900px) 45vw, 100vw" format="webp" quality={82} loading="lazy" /></div>
+        <div class="service-detail-copy">
+          <p class="eyebrow"><span class="section-tick"></span>/{service.number} · {service.title}</p>
+          <h2 id={`${service.id}-heading`}>{service.heading}</h2>
+          <p class="body-copy">{service.body}</p>
+          <ul class="check-list">{service.points.map(point => <li><Icon name="check" />{point}</li>)}</ul>
+          {service.id === 'robotics'
+            ? <a href="/robotics/" class="text-link">Explore retrofitting & manufacturing<Icon name="arrow" /></a>
+            : <a href={`/contact/?interest=${service.id}#enquiry`} class="text-link">Discuss this service<Icon name="arrow" /></a>}
+        </div>
+      </section>
+    ))}
+  </div>
   <section class="project-start shell" aria-labelledby="project-start-heading"><div><p class="eyebrow"><span class="section-tick"></span> Start with your process</p><h2 id="project-start-heading">A useful first conversation<br />starts with the right details.</h2></div><p>Tell us what your machine does, what you want to change and what equipment is already installed. Photographs, drawings or a short description can help the team understand your starting point.</p></section>
   <Contact />
 </SiteLayout>

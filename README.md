@@ -1,6 +1,6 @@
 # Linear Automation
 
-A responsive company website built with Astro and Tailwind CSS, following the folder conventions used in the Trip2Go reference project. Includes a homepage, About Us, Our Expertise, Products, Our Clients, Contact and a custom 404 page.
+A responsive company website built with Astro and Tailwind CSS, following the folder conventions used in the Trip2Go reference project. Includes a homepage, About Us, Our Expertise, Robotics, Products, Our Clients, Contact and a custom 404 page.
 
 ## Getting started
 
@@ -47,6 +47,7 @@ The supplied company images and logo PDF are preserved in the project root as so
 - Edit the individual sections in `src/components/` to change the content.
 - Edit `src/styles/global.css` for the visual theme and responsive layouts.
 - Service and product links lead to their detailed sections, with enquiry links that preselect the matching topic on the contact form.
+- Robotics is included across the service listings. `/robotics/` explains robot retrofitting and manufacturing from scratch, with separate enquiry topics and a homepage feature section.
 - The contact form prepares a message locally and shows a preview. The visitor chooses Continue to WhatsApp to review and send it. Phone links open the device's dialler. No message is sent automatically.
 - Phone numbers come from the supplied brochure. There is no invented email address, street address or contact form inbox.
 
@@ -77,3 +78,5 @@ Direct page requests work as ordinary static routes. Unknown paths use `404.html
 See [Astro's Vercel guide](https://docs.astro.build/en/guides/deploy/vercel/) and [Vercel's supported Node versions](https://vercel.com/docs/functions/runtimes/node-js/node-js-versions) for deployment documentation.
 
 Research references, asset provenance and the complete image-generation prompts are recorded in [docs/content-and-assets.md](docs/content-and-assets.md).
+
+The robotics expansion has additional [research and image notes](docs/robotics-content-and-assets.md), including the two new illustrative image prompts.

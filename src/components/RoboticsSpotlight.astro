@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets';
+import retrofitImage from '../assets/images/robot-retrofitting.png';
+import manufacturingImage from '../assets/images/robot-manufacturing.png';
+import { roboticsServices } from '../data/company';
+import Icon from './Icon.astro';
+
+const images = [
+  { src: retrofitImage, alt: 'Illustration of new components being fitted to an existing industrial robot' },
+  { src: manufacturingImage, alt: 'Illustration of a new custom robot assembled from mechanical and motion components' },
+];
+---
+
+<section id="robotics" class="robotics-spotlight section-space" aria-labelledby="robotics-home-title">
+  <div class="shell">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow"><span class="status-dot"></span> Robotics, built around your task</p>
+        <h2 id="robotics-home-title">Revive what you have.<br /><span>Build what comes next.</span></h2>
+      </div>
+      <a href="/robotics/" class="text-link">Discover our robotics services <Icon name="arrow" /></a>
+    </div>
+    <div class="robotics-spotlight-grid">
+      {roboticsServices.map((service, index) => (
+        <article>
+          <a class="robotics-spotlight-image" href={`/robotics/#${service.id}`} aria-label={service.linkLabel}>
+            <Image src={images[index].src} alt={images[index].alt} widths={[480, 800, 1200]} sizes="(min-width: 640px) 45vw, 100vw" format="webp" quality={84} loading="lazy" />
+            <span class="robotics-image-number">0{index + 1}</span>
+          </a>
+          <div class="robotics-spotlight-copy">
+            <p class="eyebrow">{service.eyebrow}</p>
+            <h3>{service.title}</h3>
+            <p>{service.description}</p>
+            <a class="text-link" href={`/robotics/#${service.id}`}>{service.linkLabel} <Icon name="arrow" /></a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

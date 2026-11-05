@@ -1,0 +1,95 @@
+---
+import { Image } from 'astro:assets';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Contact from '../components/Contact.astro';
+import Icon from '../components/Icon.astro';
+import retrofitImage from '../assets/images/robot-retrofitting.png';
+import manufacturingImage from '../assets/images/robot-manufacturing.png';
+
+const retrofitScope = [
+  'Assessment of the robot, installed controls and existing documentation',
+  'New replacement motors, drives, feedback devices or mechanical wear parts, as required',
+  'Renewed cabling, connectors and sensors where the assessment identifies a need',
+  'Compatible control updates, programming changes and functional testing',
+];
+const manufacturingScope = [
+  'Mechanical design and fabrication of the robot structure',
+  'Selection and assembly of joints, actuators, drives and feedback components',
+  'Gripper, end-effector and fixture design around the workpiece',
+  'Electrical controls, wiring and coordinated motion programming',
+  'Assembly, application testing and integration with the surrounding process',
+];
+const stages = [
+  { title: 'Define the task', text: 'Agree what the robot handles, where it moves, the space available and the production objective.' },
+  { title: 'Assess or design', text: 'Review the existing robot for a retrofit, or develop the mechanical and control concept for a new build.' },
+  { title: 'Build & program', text: 'Replace the selected components or assemble the new robot, then develop the required operating sequence.' },
+  { title: 'Test the application', text: 'Check movement, feedback, tooling and machine interaction against the agreed project requirements.' },
+];
+const faqs = [
+  { question: 'What is the difference between retrofitting and manufacturing?', answer: 'Retrofitting starts with an existing robot and replaces old or unsuitable components with new ones. Manufacturing starts with a new design and builds the robot from scratch, including its mechanical structure, motion hardware, controls and programming.' },
+  { question: 'Can every old robot be retrofitted?', answer: 'Suitability depends on mechanical condition, component compatibility, controller support and the task the robot needs to perform. We begin with an assessment so the scope can be based on the actual equipment. A new build can be discussed where an existing robot is unsuitable.' },
+  { question: 'Which parts can be replaced during a retrofit?', answer: 'The assessment may identify motors, drives, feedback devices, cables, connectors, sensors or worn mechanical parts for replacement. Control hardware and software changes are considered alongside the components they need to operate.' },
+  { question: 'What details are useful for a robot built from scratch?', answer: 'Describe the workpiece, its weight, the required reach and movement, the workspace and your target production sequence. Include the tooling or gripper load when describing the task. Drawings or a short process video can help explain the requirement.' },
+  { question: 'Can a robot work with an existing production line?', answer: 'The robot and surrounding machines need to exchange the right signals and follow a coordinated sequence. Existing PLCs, electrical interfaces, available space and operator access are reviewed when discussing integration.' },
+];
+---
+
+<SiteLayout title="Robot Retrofitting & Manufacturing | Linear Automation" description="Upgrade an existing robot with new components or manufacture a new robot from scratch. Explore Linear Automation’s robotics design, controls, programming and testing approach.">
+  <PageHeader eyebrow="Robotics" title="Robotics, reimagined." accent="Built for your production." description="Two ways to move forward: replace ageing parts in an existing robot, or design and manufacture a completely new robot around your application." />
+
+  <nav class="robotics-route-links shell" aria-label="Robotics services">
+    <a href="#retrofitting"><span>/01</span><div><strong>Robot retrofitting</strong><p>Upgrade an existing robot.</p></div><Icon name="arrow" /></a>
+    <a href="#manufacturing"><span>/02</span><div><strong>Robot manufacturing</strong><p>Build a new robot from scratch.</p></div><Icon name="arrow" /></a>
+  </nav>
+
+  <div class="robotics-detail-list shell">
+    <section id="retrofitting" class="robotics-detail" aria-labelledby="retrofitting-title">
+      <div class="robotics-detail-image"><Image src={retrofitImage} alt="Illustrative replacement of components in an existing industrial robot" widths={[480, 800, 1200]} sizes="(min-width: 900px) 45vw, 100vw" format="webp" quality={84} loading="eager" /></div>
+      <div>
+        <p class="eyebrow"><span class="section-tick"></span> 01 / Robot retrofitting</p>
+        <h2 id="retrofitting-title">The robot you know.<br /><span class="muted-heading">New parts. New possibilities.</span></h2>
+        <p class="body-copy">Retrofitting gives an existing robot a new working chapter. We replace old, worn or obsolete parts with new, compatible components and update the associated controls and programming where the project requires it.</p>
+        <p class="body-copy">The starting point is the robot’s condition and the job it needs to do. Serviceable assemblies can be retained while the components limiting the application are identified for replacement.</p>
+        <h3 class="scope-heading">A retrofit scope may include</h3>
+        <ul class="check-list">{retrofitScope.map(item => <li><Icon name="check" />{item}</li>)}</ul>
+        <a href="/contact/?interest=robot-retrofitting#enquiry" class="button button-dark">Discuss a robot retrofit <Icon name="arrow" /></a>
+      </div>
+    </section>
+
+    <section id="manufacturing" class="robotics-detail robotics-detail-reverse" aria-labelledby="manufacturing-title">
+      <div class="robotics-detail-image"><Image src={manufacturingImage} alt="Illustrative custom robot structure and motion assemblies during a new build" widths={[480, 800, 1200]} sizes="(min-width: 900px) 45vw, 100vw" format="webp" quality={84} loading="lazy" /></div>
+      <div>
+        <p class="eyebrow"><span class="section-tick"></span> 02 / Robot manufacturing</p>
+        <h2 id="manufacturing-title">A new robot.<br /><span class="muted-heading">Engineered from the ground up.</span></h2>
+        <p class="body-copy">Our manufacturing work builds new robots from scratch. The design begins with the task: what the robot handles, the load it moves, the reach it needs and the space it works within.</p>
+        <p class="body-copy">From the mechanical structure and joint arrangement to motion components, electrical controls and software, the robot is developed as one coordinated machine. Tooling and interaction with nearby equipment are considered as part of the application.</p>
+        <h3 class="scope-heading">A new-build scope can cover</h3>
+        <ul class="check-list">{manufacturingScope.map(item => <li><Icon name="check" />{item}</li>)}</ul>
+        <a href="/contact/?interest=robot-manufacturing#enquiry" class="button button-dark">Discuss a new robot <Icon name="arrow" /></a>
+      </div>
+    </section>
+  </div>
+
+  <section class="robotics-comparison-section" aria-labelledby="robotics-options-title">
+    <div class="shell">
+      <div class="section-heading"><div><p class="eyebrow"><span class="section-tick"></span> Choose your starting point</p><h2 id="robotics-options-title">An existing robot.<br />Or a new requirement.</h2></div><p class="section-intro">The right route follows the equipment you have and the task you want to achieve.</p></div>
+      <div class="robotics-comparison">
+        <article><h3>Retrofitting</h3><dl><dt>Starting point</dt><dd>An existing robot and its current condition.</dd><dt>Engineering focus</dt><dd>New replacement components, compatible controls and an updated operating sequence.</dd><dt>Bring to the conversation</dt><dd>Robot model, controller details, fault history and photographs of the current equipment.</dd></dl><a href="/contact/?interest=robot-retrofitting#enquiry" class="text-link">Ask about retrofitting <Icon name="arrow" /></a></article>
+        <article><h3>Manufacturing</h3><dl><dt>Starting point</dt><dd>A production task that needs a newly designed robot.</dd><dt>Engineering focus</dt><dd>Mechanical design, fabrication, assembly, tooling, electrical controls and programming.</dd><dt>Bring to the conversation</dt><dd>Workpiece details, load, reach, workspace, movement and production requirements.</dd></dl><a href="/contact/?interest=robot-manufacturing#enquiry" class="text-link">Ask about a new build <Icon name="arrow" /></a></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="robotics-stages section-space shell" aria-labelledby="robotics-stages-title">
+    <div class="section-heading"><div><p class="eyebrow"><span class="section-tick"></span> From requirement to working motion</p><h2 id="robotics-stages-title">Mechanical. Electrical.<br />Programmed to work together.</h2></div><a href="/services/" class="text-link">See our connected expertise <Icon name="arrow" /></a></div>
+    <ol>{stages.map((stage, index) => <li><span class="eyebrow">/0{index + 1}</span><h3>{stage.title}</h3><p>{stage.text}</p></li>)}</ol>
+    <div class="robotics-testing-note"><Icon name="check" /><p>Guarding, emergency stops, operator access and controlled testing belong in the project discussion. The protection measures and validation needed for the application are considered alongside the robot’s mechanical and control design.</p></div>
+  </section>
+
+  <section class="robotics-faq shell" aria-labelledby="robotics-faq-title">
+    <div><p class="eyebrow"><span class="section-tick"></span> A few useful answers</p><h2 id="robotics-faq-title">Before we<br />start building.</h2></div>
+    <div>{faqs.map(faq => <details><summary>{faq.question}<Icon name="plus" /></summary><p>{faq.answer}</p></details>)}</div>
+  </section>
+  <Contact />
+</SiteLayout>

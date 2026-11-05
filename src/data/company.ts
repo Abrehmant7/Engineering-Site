@@ -28,6 +28,7 @@ export const clients = [
 export const services = [
   {
     id: 'mechanical-engineering',
+    href: '/services/#mechanical-engineering',
     number: '01',
     icon: 'mechanical',
     title: 'Mechanical engineering',
@@ -36,6 +37,7 @@ export const services = [
   },
   {
     id: 'electrical-control-panels',
+    href: '/services/#electrical-control-panels',
     number: '02',
     icon: 'panel',
     title: 'Electrical control panels',
@@ -44,11 +46,40 @@ export const services = [
   },
   {
     id: 'plc-programming',
+    href: '/services/#plc-programming',
     number: '03',
     icon: 'code',
     title: 'PLC & machine programming',
     description: 'Purposeful programming that turns complex machine operations into coordinated, efficient and repeatable processes.',
     detail: 'PLC programming / Machine control',
+  },
+  {
+    id: 'robotics',
+    href: '/robotics/',
+    number: '04',
+    icon: 'robot',
+    title: 'Robotics',
+    description: 'Give an existing robot new life through component replacement, or manufacture a new robot from the ground up around your production task.',
+    detail: 'Retrofitting / Robot manufacturing',
+  },
+] as const;
+
+export const roboticsServices = [
+  {
+    id: 'retrofitting',
+    interest: 'robot-retrofitting',
+    title: 'Robot retrofitting',
+    eyebrow: 'A new life for existing equipment',
+    description: 'Replace old, worn or obsolete robot parts with new, compatible components. Bring the mechanics, controls and programming back into a coordinated system.',
+    linkLabel: 'Explore retrofitting',
+  },
+  {
+    id: 'manufacturing',
+    interest: 'robot-manufacturing',
+    title: 'Robot manufacturing',
+    eyebrow: 'A new robot, from the ground up',
+    description: 'Design and manufacture a new robot from scratch: its structure, movement, tooling, electrical controls and programming, shaped around the job it needs to do.',
+    linkLabel: 'Explore robot manufacturing',
   },
 ] as const;
 
@@ -94,6 +125,7 @@ export const allClients = [
 export const navigation = [
   { href: '/about/', label: 'About us' },
   { href: '/services/', label: 'Our expertise' },
+  { href: '/robotics/', label: 'Robotics' },
   { href: '/products/', label: 'Products' },
   { href: '/clients/', label: 'Our clients' },
 ];
